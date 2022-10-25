@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const BlogPosts = sequelize.define('BlogPosts', {
+      id: DataTypes.INTEGER,
       title: DataTypes.STRING,
       content: DataTypes.STRING,
       userId: DataTypes.INTEGER,
@@ -8,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     }, {
       underscored: true,
       tableName: 'blog_posts',
+      createdAt: 'published',
+      updatedAt: 'updated',
     });
   
     BlogPosts.associate = (models) => {
