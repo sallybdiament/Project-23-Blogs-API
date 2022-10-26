@@ -12,6 +12,7 @@ const validateBody = (params) => {
     const { error } = userSchema.validate(params);
 
     if (error) return { type: 400 };
+    return { type: 200 };
 };
 
 const validateLogin = async ({ email, password }) => {
@@ -28,7 +29,7 @@ const validateLogin = async ({ email, password }) => {
 
     const token = jwtUtil.createToken(userWithoutPassword);
 
-    return token;
+    return { token };
 };
 
 // const validateToken = (token) => {

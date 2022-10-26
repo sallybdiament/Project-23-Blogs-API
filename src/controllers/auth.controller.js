@@ -10,12 +10,15 @@ const login = async (req, res) => {
 
     // const { email, password } = authService.validateBody(req.body);
     const { email, password } = req.body;
-    const token = await authService.validateLogin({ email, password });
-    if (token.type === 400) {
+    const result = await authService.validateLogin({ email, password });
+    if (result.type) {
         return res.status(400).json({
         message: 'Invalid fields',
         }); 
     }
+    console.log(result.token);
+    const { token } = result;
+    console.log(token);
     return res.status(200).json({ token });
 };
 
