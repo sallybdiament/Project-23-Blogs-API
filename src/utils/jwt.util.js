@@ -10,16 +10,17 @@ const createToken = (data) => {
     return token;
 };
 
-const validateToken = (token) => {
-    try {
-        const { data } = jwt.verify(token, process.env.JWT_SECRET);
+// const validateToken = (token) => {
+//     try {
+//         const { data } = jwt.verify(token, process.env.JWT_SECRET);
 
-        return data;
-    } catch (error) {
-        const e = new Error('Token inválido');
-        e.name = 'Não válido';
-        throw e;
-    }
-};
+//         return data;
+//     } catch (error) {
+//         const e = new Error('Token inválido');
+//         e.name = 'Não válido';
+//         throw e;
+//     }
+// };
 
-module.exports = { createToken, validateToken };
+module.exports = { createToken };
+    // , validateToken };

@@ -4,26 +4,24 @@ const jwtUtil = require('../utils/jwt.util');
 const { User } = require('../models');
 
 const validateBody = (params) => {
-    const schema = Joi.object({
+    const userSchema = Joi.object({
         email: Joi.string().email().required(),
         password: Joi.string().required(),
     });
 
-    const { error, value } = schema.validate(params);
+    const { error } = userSchema.validate(params);
 
-    if (error) throw error;
-
-    return value;
+    if (error) return { type: 400 };
 };
 
 const validateLogin = async ({ email, password }) => {
     // SELECT * FROM USERS WHERE EMAIL = XXXXX
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ 
+        attributes: ['id', 'email', 'displayName', 'password'],
+        where: { email } });
 
     if (!user || user.password !== password) {
-        const e = new Error('Usuário ou senha não válidos!');
-        e.name = ' Não autorizado';
-        throw e;
+        return { type: 400 };
     }
 
     const { password: _, ...userWithoutPassword } = user.dataValues;
@@ -33,16 +31,17 @@ const validateLogin = async ({ email, password }) => {
     return token;
 };
 
-const validateToken = (token) => {
-    if (!token) {
-        const e = new Error('Token obrigatório!');
-        e.name = 'Token obrigatório';
-        throw e;
-    }
+// const validateToken = (token) => {
+//     if (!token) {
+//         const e = new Error('Token obrigatório!');
+//         e.name = 'Token obrigatório';
+//         throw e;
+//     }
 
-    const user = jwtUtil.validateToken(token);
+//     const user = jwtUtil.validateToken(token);
 
-    return user;
-};
+//     return user;
+// };
 
-module.exports = { validateBody, validateLogin, validateToken };
+module.exports = { validateBody, validateLogin };
+    // , validateToken };
