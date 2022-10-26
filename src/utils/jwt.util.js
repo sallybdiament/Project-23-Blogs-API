@@ -13,7 +13,6 @@ const createToken = (data) => {
 // const validateToken = (token) => {
 //     try {
 //         const { data } = jwt.verify(token, process.env.JWT_SECRET);
-
 //         return data;
 //     } catch (error) {
 //         const e = new Error('Token inválido');
@@ -23,4 +22,4 @@ const createToken = (data) => {
 // };
 
 module.exports = { createToken };
-    // , validateToken };
+    // , validateToken }
