@@ -27,6 +27,14 @@ const createUser = async (newUser) => {
     return { type: 409, message: { message: 'User already registered' } };
 };
 
-const getUsers = async () => User.findAll();
+const getUsers = async () => {
+    const users = await User.findAll(); 
+    return users;
+};
 
-module.exports = { createUser, getUsers };
+const findById = async (id) => {
+    const user = await User.findByPk(id);
+    return user;
+};
+
+module.exports = { createUser, getUsers, findById };
