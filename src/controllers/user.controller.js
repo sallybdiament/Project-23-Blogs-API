@@ -3,7 +3,7 @@ const userService = require('../services/user.service');
 const createUser = async (req, res) => {
     const newUser = req.body;
     const result = await userService.createUser(newUser);
-    return res.status(result.type).json({ token: result.message });
+    return res.status(result.type).json(result.message);
 };
 
 const getUsers = async (req, res) => {
