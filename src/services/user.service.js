@@ -21,8 +21,7 @@ const createUser = async (newUser) => {
     if (!user) { 
        await User.create(newUser);
        const { token } = await auth.validateLogin(newUser);
-       const result = { token: token };
-        return { type: 201, message: result }; 
+        return { type: 201, message: token }; 
     }
     return { type: 409, message: { message: 'User already registered' } };
 };

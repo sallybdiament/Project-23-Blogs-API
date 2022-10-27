@@ -3,6 +3,7 @@ const userService = require('../services/user.service');
 const createUser = async (req, res) => {
     const newUser = req.body;
     const result = await userService.createUser(newUser);
+    if (result.type === 201) { return res.status(result.type).json({ token: result.message }); }
     return res.status(result.type).json(result.message);
 };
 
