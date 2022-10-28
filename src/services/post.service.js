@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { BlogPost, User, Category } = require('../models');
+const { BlogPost, User, Category, PostCategory } = require('../models');
 
 const getPosts = async () => {
     const posts = await BlogPost.findAll({
@@ -24,6 +24,11 @@ const findById = async (id) => {
     return { type: 200, result: post };
 };
 
+const createPostCategory = async (newPostObj, postId) => {
+  const create = newPostObj.categoryIds.map((c) => PostCategory.create({ postId, categoryId: c }));
+  await Promise.all(create);
+};
+
 const createPost = async (newPost, userId) => {
   const newPostSchema = Joi.object({
     title: Joi.string().required().messages({ 
@@ -39,9 +44,9 @@ const arrayCatIds = newPost.categoryIds.map((category) => Category.findByPk(cate
 const resultArray = await Promise.all(arrayCatIds);
 const checkCatIds = resultArray.some((query) => query === null);
 if (checkCatIds) return { type: 400, message: { message: 'one or more "categoryIds" not found' } };
-const newPostObject = { ...newPost, userId };
-const newPostCreated = await BlogPost.create(newPostObject);
-console.log(newPostCreated);
+const newPostObj = { ...newPost, userId };
+const newPostCreated = await BlogPost.create(newPostObj);
+await createPostCategory(newPostObj, newPostCreated.id);
 return { type: 201, message: newPostCreated };
 };
 
