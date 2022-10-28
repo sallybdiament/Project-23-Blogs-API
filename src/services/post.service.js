@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const { BlogPost, User, Category } = require('../models');
 
 const getPosts = async () => {
@@ -23,4 +24,25 @@ const findById = async (id) => {
     return { type: 200, result: post };
 };
 
-module.exports = { getPosts, findById };
+const createPost = async (newPost, userId) => {
+  const newPostSchema = Joi.object({
+    title: Joi.string().required().messages({ 
+        'string.empty': 'Some required fields are missing' }),
+    content: Joi.string().required().messages({ 
+      'string.empty': 'Some required fields are missing' }),
+    categoryIds: Joi.required().messages({ 
+      'string.empty': 'Some required fields are missing' }),
+});
+const { error } = newPostSchema.validate(newPost);
+if (error) return { type: 400, message: { message: error.details[0].message } };
+const arrayCatIds = newPost.categoryIds.map((category) => Category.findByPk(category));
+const resultArray = await Promise.all(arrayCatIds);
+const checkCatIds = resultArray.some((query) => query === null);
+if (checkCatIds) return { type: 400, message: { message: 'one or more "categoryIds" not found' } };
+const newPostObject = { ...newPost, userId };
+const newPostCreated = await BlogPost.create(newPostObject);
+console.log(newPostCreated);
+return { type: 201, message: newPostCreated };
+};
+
+module.exports = { getPosts, findById, createPost };

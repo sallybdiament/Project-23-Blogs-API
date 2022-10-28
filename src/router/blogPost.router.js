@@ -8,7 +8,7 @@ const router = express.Router();
 // router.get('/:id', blogPostController.findById);
 router.get('/', authMiddleware.validateToken, blogPostController.getPosts);
 router.get('/:id', authMiddleware.validateToken, blogPostController.findById);
-// router.post('/', authMiddleware.validateToken, blogPostController.createPost);
+router.post('/', authMiddleware.validateToken, blogPostController.createPost);
 // router.put('/:id', authMiddleware.validateToken, blogPostController.update);
 
 module.exports = router;
