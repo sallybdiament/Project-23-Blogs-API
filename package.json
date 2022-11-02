@@ -33,8 +33,6 @@
     "test-coverage": "jest -i --verbose --forceExit --coverage",
     "debug": "nodemon .",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "change-case": "4.1.2",
@@ -50,6 +48,5 @@
     "sequelize-jest-helpers-trybe": "1.0.0",
     "supertest": "4.0.2",
     "wait-on": "6.0.1"
-  },
-  "homepage": "https://sallybdiament.github.io/Trybe-Project-23-Blogs-API/"
+  }
 }
