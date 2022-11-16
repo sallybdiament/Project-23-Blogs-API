@@ -30,11 +30,16 @@ git clone git@github.com:sallybdiament/Project-23-Blogs-API.git
 ```
 ##### 2 - Subir os containers `blogs_api` e `blogs_api_db` utilizando o docker-compose
 
-Na raíz do projeto: ``` docker-compose up -d ```
+Na raíz do projeto: 
+``` 
+docker-compose up -d 
+```
 
 ##### 3 - Abrir o terminal do container `blogs_api`
 
-    ```docker exec -it blogs_api bash```
+    ```
+    docker exec -it blogs_api bash
+    ```
 
 ##### 4 - Instalar as dependências
 
