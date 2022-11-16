@@ -24,36 +24,36 @@ Projeto 23 da [Trybe](https://wwww.betrybe.com), módulo de Back-End.
 
 ## Instalação 
 
-##### 1- Clonar o repositório
+#### 1- Clonar o repositório
 ```
 git clone git@github.com:sallybdiament/Project-23-Blogs-API.git
 ```
-##### 2 - Subir os containers `blogs_api` e `blogs_api_db` utilizando o docker-compose
+#### 2 - Subir os containers `blogs_api` e `blogs_api_db` utilizando o docker-compose
 
 Na raíz do projeto: 
 ``` 
 docker-compose up -d 
 ```
 
-##### 3 - Abrir o terminal do container `blogs_api`
+#### 3 - Abrir o terminal do container `blogs_api`
 
 ```docker exec -it blogs_api bash```
 
-##### 4 - Instalar as dependências
+#### 4 - Instalar as dependências
 
 No terminal do container: ```npm install```
 
-##### 5 - Criar e popular o banco de dados:
+#### 5 - Criar e popular o banco de dados:
 
 Criando as tabelas: ```npm run prestart```
 
 Populando o banco com dados: ```npm run seed```
 
-##### 6 - Executare a aplicação:
+#### 6 - Executare a aplicação:
 
 ```npm run dev```
 
-##### /*Foi utilizado o Thunder Client como cliente de requisições HTTP/*
+#### /*Foi utilizado o Thunder Client como cliente de requisições HTTP/*
 
 ## Tecnologias
 - Node.js
