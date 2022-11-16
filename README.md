@@ -37,9 +37,7 @@ docker-compose up -d
 
 ##### 3 - Abrir o terminal do container `blogs_api`
 
-    ```
-    docker exec -it blogs_api bash
-    ```
+```docker exec -it blogs_api bash```
 
 ##### 4 - Instalar as dependências
 
@@ -53,7 +51,7 @@ Populando o banco com dados: ```npm run seed```
 
 ##### 6 - Executare a aplicação:
 
-    ```npm run dev```
+```npm run dev```
 
 ##### Foi utilizado o Thunder Client como cliente de requisições HTTP
 
