@@ -53,7 +53,7 @@ Populando o banco com dados: ```npm run seed```
 
 ```npm run dev```
 
-##### Foi utilizado o Thunder Client como cliente de requisições HTTP
+##### /*Foi utilizado o Thunder Client como cliente de requisições HTTP/*
 
 ## Tecnologias
 - Node.js
