@@ -46,9 +46,9 @@ Criando as tabelas: ```npm run prestart```
 
 Populando o banco com dados: ```npm run seed```
 
-#### 6 - Executare a aplicação:
+#### 6 - Executar a aplicação Node com nodemon:
 
-```npm run dev```
+```npm run debug```
 
 #### \*Foi utilizado o Thunder Client como cliente de requisições HTTP\*
 
