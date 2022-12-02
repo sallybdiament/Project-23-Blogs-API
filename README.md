@@ -6,6 +6,8 @@ Aplicação em Node.js usando o pacote sequelize para fazer um CRUD de posts.
 Com endpoints conectados ao banco de dados seguindo os princípios do REST.
 Para fazer um post é necessário usuário e login, e validação do login com Json Web Token.
 
+[Documentação no swagger](https://app.swaggerhub.com/apis/SALLYBARZILAI/swagger-project-blogs_api/1.0.0) 
+
 Projeto 23 da [Trybe](https://wwww.betrybe.com), módulo de Back-End.
 
 ## O Projeto
@@ -61,3 +63,4 @@ Populando o banco com dados: ```npm run seed```
 - Joi
 - Docker
 - MySQL
+- Swagger
