@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  description: "Project Blogs API"
+  version: "1.0.0"
+  title: "Project Blogs API"
+servers:
+  - url: http://localhost:3000
+    description: Local server
+tags:
+- name: "user"
+  description: "Access to user"
+- name: "category"
+  description: "Access to category"
+
+paths:
+  /categories:
+    get:
+      tags:
+        - 'category'
+      description: get all categories
+      responses:
+        '200':
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        display_name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        image:
+          type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        
